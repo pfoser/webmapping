@@ -31,24 +31,17 @@
         <div id="content" class="span8">
 
           <div class="page" id="blog-single" role="main">
-
-            
-                <div id="post-6886" class="post-6886 post type-post status-publish format-standard hentry category-data-for-csos category-howto">
-
-                  <div class="post-content">
                     <h2 class="posttitle">Putting Points on Maps Using GeoJSON Created by Open Refine</h2>
-                                          <div class="date">
-                        May 19, 2014 <span>in <a href="https://web.archive.org/web/20241007131606/https://schoolofdata.org/category/data-for-csos/" rel="category tag">Data for CSOs</a>, <a href="https://web.archive.org/web/20241007131606/https://schoolofdata.org/category/howto/" rel="category tag">HowTo</a></span>                      </div>
-                    
+                                    
                     <div class="entry">
-                      <p><!--magazine.image = https://farm8.staticflickr.com/7330/14010958000_b2793869e7_z.jpg --></p>
+                      <p>Originally posted at <a href="https://schoolofdata.org/2014/05/19/putting-points-on-maps-using-geojson-created-by-open-refine/"> https://schoolofdata.org/2014/05/19/putting-points-on-maps-using-geojson-created-by-open-refine/</a> </p>
 <p>Having access to geo-data is one thing, quickly sketching it on to a map is another. In this post, we look at how you can use <a href="https://web.archive.org/web/20241007131606/http://openrefine.org/">OpenRefine</a> to take some tabular data and export it in a format that can be quickly visualised on an interactive map.</p>
 <p>At the School of Data, we try to promote an open standards based approach: if you put your data into a standard format, you can plug it directly into an application that someone else has built around that standard, confident in the knowledge that it should <em>“just work”</em>. That’s not always true of course, but we live in hope.</p>
 <p>In the world of geo-data – geographical data – the <a href="https://web.archive.org/web/20241007131606/http://geojson.org/">geojson</a> standard defines a format that provides a relatively lightweight way of representing data associated with points (single markers on a map), lines (lines on a map) and polygons (shapes or regions on a map).</p>
 <p>Many applications can read and write data in this format. In particular, Github’s <a href="https://web.archive.org/web/20241007131606/https://gist.github.com/"><em>gist</em> service</a> allows you to paste a geojson data file into a gist, whereupon it will render it for you (<a href="https://web.archive.org/web/20241007131606/https://github.com/blog/1576-gist-meets-geojson">Gist meets GeoJSON</a><a>).</a></p><a>
-</a><p><a></a><a href="https://web.archive.org/web/20241007131606/https://www.flickr.com/photos/psychemedia/14010958000" title="Gists_and_test by Tony Hirst, on Flickr"><img src="./Putting Points on Maps Using GeoJSON Created by Open Refine _ School of Data - Evidence is Power_files/14010958000_b2793869e7_z.jpg" width="640" height="385" alt="Gists_and_test"></a></p>
+</a><p><a href="https://web.archive.org/web/20241007131606/https://www.flickr.com/photos/psychemedia/14010958000" title="Gists_and_test by Tony Hirst, on Flickr"><img src="./Putting Points on Maps Using GeoJSON Created by Open Refine _ School of Data - Evidence is Power_files/14010958000_b2793869e7_z.jpg" width="640" height="385" alt="Gists_and_test"></a></p>
 <p>So how can we get from some tabular data that looks something like this:</p>
-<p><a href="https://web.archive.org/web/20241007131606/https://www.flickr.com/photos/psychemedia/14011159227" title="simple_geo_points-tab_-_OpenRefine by Tony Hirst, on Flickr"><img loading="lazy" src="./Putting Points on Maps Using GeoJSON Created by Open Refine _ School of Data - Evidence is Power_files/14011159227_af2b6e237c_z.jpg" width="640" height="275" alt="simple_geo_points-tab_-_OpenRefine"></a></p>
+<p><a href="https://web.archive.org/web/20241007131606/https://www.flickr.com/photos/psychemedia/14011159227" https://schoolofdata.org/2014/05/19/putting-points-on-maps-using-geojson-created-by-open-refine/simple_geo_points-tab_-_OpenRefine by Tony Hirst, on Flickr"><img loading="lazy" src="./Putting Points on Maps Using GeoJSON Created by Open Refine _ School of Data - Evidence is Power_files/14011159227_af2b6e237c_z.jpg" width="640" height="275" alt="simple_geo_points-tab_-_OpenRefine"></a></p>
 <p>Into the geojson data, which looks something like this?</p>
 <pre>{"features": [   {"geometry": 
         {   "coordinates": [  0.124862,
