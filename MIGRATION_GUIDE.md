@@ -1,19 +1,38 @@
-# 🛠️ Migrating a CodePen Project to Local Development with Webpack
+# Migrating a CodePen Project to Local Development with Webpack
 
 This guide walks you through converting a CodePen project into a modern local development setup using **Node.js**, **Webpack**, and **npm**.
+The example we will be using is the San Francisco Web map that shows the home locations of a synthetic population (100k agents).
+
+## 0. Download CodePen Files
+
+Before starting the migration, download your existing CodePen project files.
+
+### 👉 CodePen URL
+
+Your project: [https://codepen.io/pfoser/pen/YPzOJNJ](https://codepen.io/pfoser/pen/YPzOJNJ)
+
+### Export as .zip
+
+1. Click the **Settings gear** or the dropdown menu near the top-right.
+2. Select **“Export → Export .zip”**.
+3. Unzip the file. Inside the exported folder, go to the `dist/` folder.
+4. Use the files from `dist/` once you set up your project as follows:
+   - `index.html` → move to your project’s `dist/` folder
+   - `script.js` → move to `src/index.js`
+   - `style.css` → move to `src/style.css`
 
 ## 📁 1. Create Your Project Structure
 
 ```bash
-mkdir my-map-project
-cd my-map-project
+mkdir sf_deck
+cd sf_deck
 npm init -y
 ```
 
 Create the following folder structure:
 
 ```
-my-map-project/
+sf_deck/
 ├── dist/
 │   └── index.html          ← your HTML file
 ├── src/
@@ -59,14 +78,16 @@ module.exports = {
 };
 ```
 
-## 4. Create `index.html` in `dist/`
+## 4. Modify `index.html` in `dist/`
+
+Modify the index.html files in your dist folder as follows. All modifications relate to javascript libraries and style files, i.e., there are no more links to other files on the internet, only a single link to a bundle.js file.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Deck.gl App</title>
+  <title>SF Deck.gl App</title>
 </head>
 <body>
   <div id="container"></div>
@@ -77,7 +98,7 @@ module.exports = {
 
 ## 5. Update Your JavaScript (`src/index.js`)
 
-Example for Mapbox GL JS + Deck.gl:
+Since we use node.js, npm and a bundler to develop our code, all libraries are downloaded locally and are "imported" into our code. 
 
 ```js
 import mapboxgl from 'mapbox-gl';
@@ -86,10 +107,12 @@ import { GeoJsonLayer } from '@deck.gl/layers';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './style.css';
 
-... remains unchanged...
+... rest remains unchanged...
 ```
 
 ## 6. Add `npm` Scripts to `package.json`
+
+Some scripts to run the Web map locally (start) and to deploy it (build). The latter step also bundles all libraries into a single javascript file - bundle.js.
 
 ```json
 "scripts": {
@@ -101,6 +124,8 @@ import './style.css';
 
 ## 7. Run the Dev Server
 
+Starts the development server to see the Web map in the browser.
+
 ```bash
 npm start
 ```
@@ -110,6 +135,8 @@ Visit:
 
 
 ## To Build for Deployment
+
+Bundles the libraries so that you can deploy it to a Web server. 
 
 ```bash
 npm run build
