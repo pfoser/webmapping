@@ -28,8 +28,9 @@ mkdir sf_deck
 cd sf_deck
 npm init -y
 ```
+This step simply creates a directory sf_deck with a single file in it package.json, which is used to keep track of the libraries that we are using and how to run and build the app.
 
-Create the following folder structure:
+In addition, create the following folder structure and copy the three files from codepen into the respective directories.
 
 ```
 sf_deck/
@@ -39,11 +40,13 @@ sf_deck/
 │   ├── index.js            ← your main JavaScript logic
 │   └── style.css           ← your custom styles
 ├── package.json
-└── webpack.config.js       ← Webpack configuration
+└── webpack.config.js       ← Webpack configuration (created later)
 ```
 
 
 ## 2. Install Dependencies
+
+This step downloads the libraries (mapbox and deck) so that they are available locally. Our package manager, npm, downloads them from a dedicated site that keeps copies of most of the javascript libraries in existence. [https://www.npmjs.com/](https://www.npmjs.com/). It also downloads the bundler, webpack, that we will use to combine all libraries together into a single js file bundle.js. 
 
 ```bash
 npm install mapbox-gl deck.gl
@@ -52,6 +55,8 @@ npm install --save-dev webpack webpack-cli webpack-dev-server style-loader css-l
 
 
 ## 3. Create `webpack.config.js`
+
+This configuration files tells webpack how to combine the individual libraries (including css files) and how to run a local web server to test and debug the app.
 
 ```js
 const path = require('path');
@@ -80,7 +85,7 @@ module.exports = {
 
 ## 4. Modify `index.html` in `dist/`
 
-Modify the index.html files in your dist folder as follows. All modifications relate to javascript libraries and style files, i.e., there are no more links to other files on the internet, only a single link to a bundle.js file.
+We have to modify the files that we downloaded from codepen for local development in this environment. The first change affects the index.html file in your dist folder as follows. All modifications relate to javascript libraries and style files, i.e., there are no more links to other files on the internet, only a single link to a bundle.js file.
 
 ```html
 <!DOCTYPE html>
@@ -98,7 +103,7 @@ Modify the index.html files in your dist folder as follows. All modifications re
 
 ## 5. Update Your JavaScript (`src/index.js`)
 
-Since we use node.js, npm and a bundler to develop our code, all libraries are downloaded locally and are "imported" into our code. 
+The second change affects how we link the Javascript library code in our Javascript code. Since we use node.js, npm and a bundler to develop our code, all libraries are downloaded locally and are "imported" into our code. 
 
 ```js
 import mapboxgl from 'mapbox-gl';
