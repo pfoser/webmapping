@@ -7,7 +7,7 @@ The example we will be using is the San Francisco Web map that shows the home lo
 
 Before starting the migration, download your existing CodePen project files.
 
-### 👉 CodePen URL
+### CodePen URL
 
 Your project: [https://codepen.io/pfoser/pen/YPzOJNJ](https://codepen.io/pfoser/pen/YPzOJNJ)
 
