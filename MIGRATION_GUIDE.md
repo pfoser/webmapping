@@ -21,7 +21,7 @@ Your project: [https://codepen.io/pfoser/pen/YPzOJNJ](https://codepen.io/pfoser/
    - `script.js` → move to `src/index.js`
    - `style.css` → move to `src/style.css`
 
-## 📁 1. Create Your Project Structure
+## 1. Create Your Project Structure
 
 ```bash
 mkdir sf_deck
