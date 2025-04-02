@@ -30,6 +30,10 @@ npm init -y
 ```
 This step simply creates a directory sf_deck with a single file in it package.json, which is used to keep track of the libraries that we are using and how to run and build the app.
 
+You can run the commands in the built-in terminal of VSCode. To open it, select "New Terminal" and it should show up at the bottom.
+
+![New Terminal in VSCode](./images/vscode_terminal.png)
+
 In addition, create the following folder structure and copy the three files from codepen into the respective directories.
 
 ```
